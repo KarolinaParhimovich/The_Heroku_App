@@ -6,39 +6,40 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Test;
+import pages.pompages.CheckboxPomPage;
 
 
 public class CheckboxesTest extends BaseTest {
     @Test
     public void firstBoxUnchecked() {
-        driver.navigate().to("http://the-internet.herokuapp.com/");
-        driver.findElement((By.linkText("Checkboxes"))).click();
+        CheckboxPomPage checkboxPomPage = new CheckboxPomPage(driver);
+        checkboxPomPage.clickCheckboxes();
         boolean unchecked = driver.findElement(By.xpath("(//input)[1]")).isSelected();
         Assert.assertFalse(unchecked, "Checked");
     }
 
     @Test
     public void firstBoxChecked() {
-        driver.navigate().to("http://the-internet.herokuapp.com/");
-        driver.findElement((By.linkText("Checkboxes"))).click();
-        driver.findElement(By.xpath("(//input)[1]")).click();
+        CheckboxPomPage checkboxPomPage = new CheckboxPomPage(driver);
+        checkboxPomPage.clickCheckboxes();
+        checkboxPomPage.clickCheckbox1();
         boolean unchecked = driver.findElement(By.xpath("(//input)[1]")).isSelected();
         Assert.assertTrue(unchecked, "Unchecked");
     }
 
     @Test
     public void secondBoxChecked() {
-        driver.navigate().to("http://the-internet.herokuapp.com/");
-        driver.findElement((By.linkText("Checkboxes"))).click();
+        CheckboxPomPage checkboxPomPage = new CheckboxPomPage(driver);
+        checkboxPomPage.clickCheckboxes();
         boolean unchecked = driver.findElement(By.xpath("(//input)[2]")).isSelected();
         Assert.assertTrue(unchecked, "Unchecked");
     }
 
     @Test
     public void secondBoxUnchecked() {
-        driver.navigate().to("http://the-internet.herokuapp.com/");
-        driver.findElement((By.linkText("Checkboxes"))).click();
-        driver.findElement(By.xpath("(//input)[2]")).click();
+        CheckboxPomPage checkboxPomPage = new CheckboxPomPage(driver);
+        checkboxPomPage.clickCheckboxes();
+        checkboxPomPage.clickCheckbox2();
         boolean unchecked = driver.findElement(By.xpath("(//input)[2]")).isSelected();
         Assert.assertFalse(unchecked, "Checked");
     }

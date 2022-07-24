@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-import static Constants.URLS.herokuApp;
 
 public class BaseTest {
     WebDriver driver;
@@ -13,7 +12,9 @@ public class BaseTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver();
-        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.navigate().to("http://the-internet.herokuapp.com/");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
