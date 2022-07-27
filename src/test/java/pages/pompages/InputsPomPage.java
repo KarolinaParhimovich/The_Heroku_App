@@ -6,7 +6,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class InputsPomPage extends BasePomPage {
-    private By INPUTS_LINK = By.linkText("Inputs");
     private By NUMBER_INPUT = By.xpath("//input");
 
     public InputsPomPage(WebDriver driver) {
@@ -15,10 +14,6 @@ public class InputsPomPage extends BasePomPage {
 
     public void openInputsPage() {
         driver.get(URLS.INPUTS);
-    }
-
-    public void clickInputs() {
-        driver.findElement(INPUTS_LINK).click();
     }
 
     public void numberUp (){

@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckboxPomPage extends BasePomPage {
-    private By CHECKBOXES_LINK = By.linkText("Checkboxes");
     private By CHECKBOX_1_INPUT = By.xpath("(//input)[1]");
     private By CHECKBOX_2_INPUT = By.xpath("(//input)[2]");
 
@@ -15,10 +14,6 @@ public class CheckboxPomPage extends BasePomPage {
 
     public void openCheckboxPage() {
         driver.get(URLS.CHECKBOXES);
-    }
-
-    public void clickCheckboxes() {
-        driver.findElement(CHECKBOXES_LINK).click();
     }
 
     public void clickCheckbox1() {

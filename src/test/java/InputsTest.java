@@ -8,7 +8,7 @@ public class InputsTest extends BaseTest {
     @Test
     public void inputsTest() {
         InputsPomPage inputsPomPage = new InputsPomPage(driver);
-        inputsPomPage.clickInputs();
+        inputsPomPage.openInputsPage();
         inputsPomPage.numberUp();
         inputsPomPage.numberUp();
         inputsPomPage.numberDown();
