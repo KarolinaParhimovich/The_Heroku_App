@@ -12,7 +12,7 @@ public class FileUploadTest extends BaseTest {
         fileUploadPomPage.openFileUploadPage();
         fileUploadPomPage.uploadFile(path);
         fileUploadPomPage.submitFile();
-        String fileName=driver.findElement(By.className("panel")).getText();
+        String fileName=fileUploadPomPage.fileName();
         Assert.assertEquals(fileName, " 47e1adaa0e55e1d4a6f286125dd20bf6.jpg ");
     }
 }

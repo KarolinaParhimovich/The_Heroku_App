@@ -8,4 +8,5 @@ public class URLS {
     public static final String ALERTS="https://the-internet.herokuapp.com/javascript_alerts";
     public static final String DROPDOWN="https://the-internet.herokuapp.com/dropdown";
     public static final String FILEUPLOAD="https://the-internet.herokuapp.com/upload";
+    public static final String DROPABLE="https://jqueryui.com/droppable/";
 }

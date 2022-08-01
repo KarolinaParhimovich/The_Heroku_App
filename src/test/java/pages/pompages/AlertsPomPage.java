@@ -3,6 +3,7 @@ package pages.pompages;
 import Constants.URLS;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AlertsPomPage extends BasePomPage{
     private By JSALERT=By.xpath("//button[text()='Click for JS Alert']");
@@ -22,6 +23,22 @@ public class AlertsPomPage extends BasePomPage{
     }
     public void pressJSPrompt(){
         driver.findElement(JSPROMPT).click();
+    }
+    public String actualText(){
+        return driver.switchTo().alert().getText();
+    }
+    public void alertAccept(){
+        driver.switchTo().alert().accept();
+    }
+    public void alertDismiss(){
+        driver.switchTo().alert().dismiss();
+    }
+    public void promptText(){
+        driver.switchTo().alert().sendKeys("Hello");
+    }
+    public boolean isTextDisplayed() {
+        WebElement actualText=driver.findElement(By.id("result"));
+        return actualText.isDisplayed();
     }
 }
 

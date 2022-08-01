@@ -5,22 +5,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.pompages.FramesPomPage;
 
-public class FramesTest {
+public class FramesTest extends BaseTest {
     @Test
-    public void dragAndDropTest() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://jqueryui.com/droppable/");
-        driver.getWindowHandle();
-        WebElement frame=driver.findElement(By.className("demo-frame"));
-        driver.switchTo().frame(frame);
-        Actions actions=new Actions(driver);
-        WebElement elementSource=driver.findElement(By.xpath("//p[text()='Drag me to my target']"));
-        WebElement elementTarget=driver.findElement(By.xpath("//p[text()='Drop here']"));
-        actions.dragAndDrop(elementSource,elementTarget).build().perform();
-        String actualText=driver.findElement(By.xpath("//p[text()='Dropped!']")).getText();
-        driver.quit();
+    public void dragAndDropTest()  {
+        FramesPomPage framesPomPage=new FramesPomPage(driver);
+        framesPomPage.openDropAble();
+        framesPomPage.openFrame();
+        framesPomPage.dragAndDrop();
+        String actualText= framesPomPage.actualText();
         Assert.assertEquals(actualText, "Dropped!");
 
     }

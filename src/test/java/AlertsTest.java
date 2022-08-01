@@ -10,8 +10,8 @@ public class AlertsTest extends BaseTest {
         AlertsPomPage alertsPomPage = new AlertsPomPage(driver);
         alertsPomPage.openAlertsPage();
         alertsPomPage.pressJSAlert();
-        String actualText = driver.switchTo().alert().getText();
-        driver.switchTo().alert().accept();
+        String actualText = alertsPomPage.actualText();
+        alertsPomPage.alertAccept();
         Assert.assertEquals(actualText, "I am a JS Alert");
     }
     @Test
@@ -19,8 +19,8 @@ public class AlertsTest extends BaseTest {
         AlertsPomPage alertsPomPage=new AlertsPomPage(driver);
         alertsPomPage.openAlertsPage();
         alertsPomPage.pressJSConfirm();
-        String actualText = driver.switchTo().alert().getText();
-        driver.switchTo().alert().dismiss();
+        String actualText = alertsPomPage.actualText();
+        alertsPomPage.alertDismiss();
         Assert.assertEquals(actualText, "I am a JS Confirm");
     }
     @Test
@@ -28,10 +28,9 @@ public class AlertsTest extends BaseTest {
         AlertsPomPage alertsPomPage=new AlertsPomPage(driver);
         alertsPomPage.openAlertsPage();
         alertsPomPage.pressJSPrompt();
-        driver.switchTo().alert().sendKeys("Hello");
-        driver.switchTo().alert().accept();
-        WebElement actualText=driver.findElement(By.id("result"));
-        boolean isActualTextDisplayed=actualText.isDisplayed();
-        Assert.assertTrue(isActualTextDisplayed,"Text is not displayed");
+        alertsPomPage.promptText();
+        alertsPomPage.alertAccept();
+        alertsPomPage.isTextDisplayed();
+        Assert.assertTrue(alertsPomPage.isTextDisplayed(),"Text is not displayed");
     }
 }
